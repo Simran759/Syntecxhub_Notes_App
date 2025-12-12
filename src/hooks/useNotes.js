@@ -19,9 +19,8 @@ export default function useNotes() {
   const [notes, setNotes] = useState([]);
   const [newNoteText, setNewNoteText] = useState("");
   const [editingNoteId, setEditingNoteId] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false); // NEW: track if data is loaded
+  const [isLoaded, setIsLoaded] = useState(false); 
 
-  // ===== EFFECT 1: LOAD once when app mounts =====
   useEffect(() => {
     console.log("📂 Loading notes from localStorage...");
     try {
@@ -29,7 +28,7 @@ export default function useNotes() {
       
       if (!raw) {
         console.log("ℹ No saved notes found in localStorage");
-        setIsLoaded(true); // Mark as loaded even if empty
+        setIsLoaded(true); 
         return;
       }
 
@@ -48,29 +47,29 @@ export default function useNotes() {
 
       console.log("✓ Loaded notes:", cleaned);
       setNotes(cleaned);
-      setIsLoaded(true); // Mark as loaded AFTER setting notes
+      setIsLoaded(true); 
     } catch (err) {
-      console.error("❌ Failed to load notes from localStorage", err);
-      setIsLoaded(true); // Mark as loaded even on error
+      console.error(" Failed to load notes from localStorage", err);
+      setIsLoaded(true); 
     }
-  }, []); // Run once on mount
+  }, []); 
 
-  // ===== EFFECT 2: SAVE whenever notes change (ONLY after loaded) =====
+  
   useEffect(() => {
-    // Don't save until data is loaded
+    
     if (!isLoaded) {
-      console.log("⏳ Waiting for data to load before saving...");
+      console.log(" Waiting for data to load before saving...");
       return;
     }
 
-    console.log("💾 Saving notes to localStorage:", notes);
+    console.log("Saving notes to localStorage:", notes);
     try {
       window.localStorage.setItem(STORAGE_KEY, JSON.stringify(notes));
-      console.log("✓ Successfully saved");
+      console.log("Successfully saved");
     } catch (err) {
-      console.error("❌ Failed to save notes to localStorage", err);
+      console.error(" Failed to save notes to localStorage", err);
     }
-  }, [notes, isLoaded]); // Save when notes OR isLoaded changes
+  }, [notes, isLoaded]); 
 
   const addNote = () => {
     const trimmed = newNoteText.trim();
@@ -133,6 +132,6 @@ export default function useNotes() {
     unlockNote,
     editingNoteId,
     setEditingNoteId,
-    isLoaded, // EXPORT: so App can use if needed
+    isLoaded, 
   };
 }

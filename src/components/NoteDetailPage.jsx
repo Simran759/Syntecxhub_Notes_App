@@ -13,7 +13,7 @@ function NoteDetailPage({
   const [draftText, setDraftText] = useState(note.text);
   const [isEditing, setIsEditing] = useState(false);
   const [showPasswordModal, setShowPasswordModal] = useState(false);
-  const [passwordModalMode, setPasswordModalMode] = useState("set"); // "set" or "verify"
+  const [passwordModalMode, setPasswordModalMode] = useState("set"); 
   const [isVerified, setIsVerified] = useState(false);
   const textareaRef = useRef(null);
 
@@ -24,7 +24,7 @@ function NoteDetailPage({
     }
   }, [isEditing]);
 
-  // If note is locked and not verified, show password verification
+
   const shouldShowContent = !note.isLocked || isVerified;
 
   const handleSave = () => {
@@ -55,39 +55,38 @@ function NoteDetailPage({
     }
   };
 
-  // When user clicks lock/unlock
+  
   const handleLockToggle = () => {
     if (note.isLocked) {
-      // Already locked, unlock
+     
       onUnlockNote(note.id);
       setIsVerified(false);
     } else {
-      // Not locked, start lock process
+      
       setPasswordModalMode("set");
       setShowPasswordModal(true);
     }
   };
 
-  // When user submits password in modal
   const handlePasswordSubmit = (password) => {
     if (passwordModalMode === "set") {
-      // User is setting new password
+     
       onLockNote(note.id, password);
       setShowPasswordModal(false);
       setIsVerified(true);
     } else {
-      // User is verifying password
+      
       if (verifyPassword(password, note.passwordHash)) {
         setIsVerified(true);
         setShowPasswordModal(false);
       } else {
-        // Wrong password - error is shown in modal
-        // Re-prompt
+        alert("Incorrect password. Please try again.");
       }
+        
     }
   };
 
-  // If locked and not verified, show locked screen
+  
   if (note.isLocked && !isVerified) {
     return (
       <div className="app-root">
@@ -131,7 +130,6 @@ function NoteDetailPage({
     );
   }
 
-  // Note is unlocked or not locked - show full detail page
   return (
     <div className="app-root">
       <div className="detail-page">

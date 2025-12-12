@@ -12,8 +12,8 @@ function App() {
   addNote,
   updateNote,
   deleteNote,
-  lockNote, // NEW
-  unlockNote, // NEW
+  lockNote, 
+  unlockNote, 
   editingNoteId,
   setEditingNoteId,
 } = useNotes();
@@ -36,24 +36,22 @@ function App() {
   const viewingNote = notes.find((n) => n.id === viewingNoteId);
 
   // If viewing a note detail page, show that instead
-  if (viewingNoteId && viewingNote) {
+  
   if (viewingNoteId && viewingNote) {
   return (
     <NoteDetailPage
       note={viewingNote}
       onUpdate={updateNote}
       onDelete={deleteNote}
-      onLockNote={lockNote} // NEW
-      onUnlockNote={unlockNote} // NEW
+      onLockNote={lockNote} 
+      onUnlockNote={unlockNote} 
       onBackClick={() => setViewingNoteId(null)}
     />
   );
 }
 
-}
+  
 
-
-  // Otherwise show the dashboard (list view)
   return (
     <div className="app-root">
       <div className="app-shell">

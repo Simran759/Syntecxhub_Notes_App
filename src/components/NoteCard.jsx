@@ -11,7 +11,7 @@ function NoteCard({ note }) {
 
   return (
     <article className={`note-card ${note.isLocked ? "note-card-locked" : ""}`}>
-      {/* Lock badge on top-right */}
+      
       {note.isLocked && <div className="note-lock-badge">🔒</div>}
 
       <div className="note-card-body">

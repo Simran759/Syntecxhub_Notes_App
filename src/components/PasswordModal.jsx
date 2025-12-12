@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 
 function PasswordModal({
-  mode, // "set" for setting new password, "verify" for checking existing
+  mode, 
   onSubmit,
   onCancel,
 }) {
@@ -21,7 +21,7 @@ function PasswordModal({
     setError("");
 
     if (mode === "set") {
-      // Setting a new password
+      
       if (!password.trim()) {
         setError("Password cannot be empty");
         return;
@@ -36,7 +36,6 @@ function PasswordModal({
       }
       onSubmit(password);
     } else {
-      // Verifying password
       if (!password.trim()) {
         setError("Enter password to unlock");
         return;
