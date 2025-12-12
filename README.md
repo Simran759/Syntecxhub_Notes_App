@@ -2,7 +2,7 @@
 
 A sleek, feature-rich notes application built with React that provides a seamless note-taking experience with password protection, persistent storage, and a beautiful dark-themed UI.
 
-![Notes App Banner](https://via.placeholder.com/1200x400/0a0e27/3b82f6?text=Modern+Notes+Application)
+
 
 ## ✨ Features
 
