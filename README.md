@@ -1,7 +1,7 @@
 # 📝 Modern Notes Application
 
 A sleek, feature-rich notes application built with React that provides a seamless note-taking experience with password protection, persistent storage, and a beautiful dark-themed UI.
-
+Visit here https://syntecxhub-notes-app.vercel.app/
 
 
 ## ✨ Features
